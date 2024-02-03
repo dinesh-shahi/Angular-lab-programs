@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <script src="angular.main.js"></script>
+
+    <script>
+        var app=angular.module("calcApp",[])
+                   .controller("calcAppctrl",function($scope){
+
+                    $scope.num1=0,
+                    $scope.num2=0,
+                    $scope.result=0,
+                    $scope.opertor="+" , //this means in the initial * operator will be there as default
+                    $scope.calculate=function()
+                    {
+                        switch($scope.operator)
+                        {
+                            case '+' : $scope.result=$scope.num1 + $scope.num2
+                                       break;
+                            case '-': $scope.result=$scope.num1 - $scope.num2
+                                      break;
+                            case '*' : $scope.result =$scope.num1 * $scope.num2
+                                       break;
+                            case '/' : if ($scope.num2==0)
+                                        {
+                                            alert("divisible by zero error")
+                                        }
+                                        $scope.result = $scope.num1 / $scope.num2
+                                        break;
+
+                        }
+
+ 
+                    }
+                   });
+
+
+    </script>
+</head>
+<body ng-app="calcApp">
+    <div ng-controller="calcAppctrl">
+        First Number:<input type="number" ng-model="num1">  //ng-model to take input from user
+        Select operator:<select ng-model="operator"> 
+            <option value="+">+</option>   //line 43: here you are taking input value for num1 
+            <option value="-">-</option>//it is providing the option
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        Second Number:<input type="number" ng-model="num2">
+        <button ng-click="calculate()">calculate</button>
+        {{num1+" "+operator+" "+num2+ "=" +result}}
+    </div>
+</body>
+</html>

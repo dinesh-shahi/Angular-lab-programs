@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="angular.main.js"></script>
+        <script>
+            var app=angular.module("adder",[]);
+            app.controller("adderctrl",function($scope){
+                $scope.num1=0,
+                $scope.num2=0,
+                $scope.result=0,
+                $scope.sum=function()
+                {
+                    $scope.result=$scope.num1+ $scope.num2
+                }
+            });
+                  
+        </script>
+    </head>
+    <body ng-app="adder">
+        <div ng-controller="adderctrl">
+            Enter the first number:<input type="number" ng-model="num1"><br/>
+            Enter the second number:<input type="number" ng-model="num2"><br/>
+            <button ng-click="sum()">Add</button><br/>
+            The sum of {{num1}} and {{num2}} is {{result}}.
+        </div>
+    </body>
+</html>

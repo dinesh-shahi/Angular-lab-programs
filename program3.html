@@ -1,0 +1,54 @@
+<html>
+<head>
+    <script src="angular.main.js"></script>
+    <script>
+        var app=angular.module("listapp",[])
+               .controller("listappctrl",function($scope){
+                 
+                $scope.list=['bread','honey']
+                 $scope.additem=function()
+                 {
+                    if(!$scope.addme){return;}
+
+                    if($scope.list.indexOf($scope.addme)== -1)
+                    {
+                        $scope.list.push($scope.addme);
+                    }
+                    else
+                    {
+                        $scope.errortext="item already exists";
+                    }
+                }
+
+                $scope.removeitem=function(x)  //yesturday i forger to create this 
+                {         //keep in mind that in removeitem() function parameter x is given
+                    $scope.list.splice(x,1);
+                }
+               });
+    </script>
+</head>
+<body ng-app="listapp">
+    <div ng-controller="listappctrl">//yesturday i mispell the name of both controller and module so keep in mind
+        
+
+        <ul>
+
+            <li ng-repeat="x in list">{{x}}  //this is casesensative to make it small x.
+                <span ng-click="removeitem($index)">
+                    <small>x</small></span>
+            </li>
+
+
+        </ul>
+
+
+
+        Enter item to be added :<input type="text" ng-model="addme">
+        <button ng-click="additem()">add</button>
+        {{errortext}}
+
+        
+    </div>
+</body>
+
+</html>

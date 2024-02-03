@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <script src="angular.main.js"> </script>
+     <script>
+        var app =angular.module("mysqfact",[])
+                 .controller("mysqfactctrl",function($scope){
+
+                    $scope.num=0
+                    $scope.factorial=function()
+                    {
+                        $scope.result=1;
+                        for(var i =$scope.num ;i>=1;i--)
+                        {
+                            $scope.result=$scope.result *i;
+                        }
+                    }
+
+                    $scope.square=function()
+                    {
+                        $scope.result=$scope.num * $scope.num
+                    }
+                 });
+     </script>
+
+    </head>
+
+    <body ng-app="mysqfact">
+
+        <div ng-controller="mysqfactctrl">
+            Enter the number:<input type="number" ng-model="num">
+            <button ng-click="factorial()">factorial</button>
+            <button ng-click="square()">square</button>
+            {{result}}
+        </div>
+    </body>
+</html>
